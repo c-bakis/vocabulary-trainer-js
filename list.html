@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vokabel-App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body onload="updateItemList()">
+    <form action="#">
+      <div class="container">
+        <label class="item-label" for="german">german</label>
+        <input class="add-item" type="text" class="german" id="german" />
+      </div>
+      <div class="container">
+        <label class="item-label" for="english">english</label>
+        <input class="add-item" type="text" class="english" id="english" />
+      </div>
+      <div>
+        <button id="addItemBtn" onclick="event.preventDefault();addVocabulary()" class="list-button" type="submit">
+          +
+        </button>
+        <a class="list-button" href="index.html">back</a>
+      </div>
+    </form>
+
+    <ul class="vocabulary-list" id="vocabularyList"></ul>
+
+    <script src="index.js"></script>
+  </body>
+</html>
