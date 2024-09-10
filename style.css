@@ -121,4 +121,11 @@ h1 {
     font-size: 150%;
 }
 
+#checkAnswer {
+ text-align: center;
+}
+
+.hide {
+    display: none;
+}
 

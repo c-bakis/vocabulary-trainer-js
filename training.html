@@ -6,14 +6,18 @@
     <title>Vokabel-App</title>
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body onload="nextVocabulary()">
+  <body>
     <div class="container">
-      <h1 id="word"></h1>
+      <h1 id="word">next</h1>
     </div>
     <form action="#">
       <div class="container">
         <input class="answer" type="text" id="answer" />
-        <button class="list-button" onclick="nextVocabulary()">check</button>
+        <button id="checkBtn" class="list-button hide" onclick="checkAnswer()">check</button>
+        <button id="nextBtn" class="list-button" onclick="nextVocabulary()">next</button>
+      </div>
+      <div>
+        <p id="checkAnswer"></p>
       </div>
       <div class="btn-container">
         <a class="button" href="index.html">back</a>
