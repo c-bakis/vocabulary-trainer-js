@@ -1,5 +1,4 @@
 
-//let vocabularyList = document.querySelector("#vocabulary-list");
 const answer = document.getElementById('answer');
 const german = document.querySelector("#german");
 const english = document.querySelector("#english");
@@ -9,7 +8,7 @@ let dictionary =  JSON.parse(localStorage.getItem('dictionary') || []);
 let item = {};
 
 
-// adds new Items to dictionary and local storage and calls the updateItemList function
+// adds new Items to dictionary and local storage and calls updateItemList function
 const addVocabulary = () => {  
   if (german.value == '' || english.value == '') {
     return
@@ -19,7 +18,6 @@ const addVocabulary = () => {
         'english': english.value,
         'id':  new Date().getTime()
     }
-    //localStorage.setItem('item', JSON.stringify(item));
     dictionary.push(item);
     localStorage.setItem('dictionary', JSON.stringify(dictionary));
       
@@ -42,7 +40,7 @@ const updateItemList = () => {
     } 
 } 
 
-//find index of an element onclick, deletes item by index from dictionary and local storage and updates ItemList
+//find index of clicked parent element, deletes item by index from dictionary and local storage and updates ItemList
 const deleteVocab = (element) => {
   let dictionaryId = dictionary.map(dictionary => dictionary.id);
   let index = dictionaryId.findIndex(id => id == element.parentNode.id);
@@ -50,7 +48,6 @@ const deleteVocab = (element) => {
     dictionary.splice(index, 1);
     updateItemList();
     localStorage.setItem('dictionary', JSON.stringify(dictionary));
-
         console.log(dictionary);
 };
 
@@ -61,9 +58,7 @@ const checkAnswerCorrect = document.getElementById('checkAnswer');
 
 let indexGerman;
 
-  
-
-//asks a random Item from dictionary in german by clicking on next button
+//generates a random Item from dictionary in german by clicking on next button
 function nextVocabulary() {
   answer.value = '';
   let dictio = dictionary.map(dictionary => dictionary.german);
@@ -73,8 +68,7 @@ function nextVocabulary() {
   indexGerman = dictio.findIndex(german => german == dictio[randomNum]);
   
   changeBtn();
-  console.log(dictio[randomNum]);
-  
+
   return indexGerman;
 }
 //checks if anser input is correct by clicking on check button
@@ -93,8 +87,8 @@ function checkAnswer() {
   
   changeBtn();
 }
-//hides one button and shows the other, when button is clicked, 
-//so that the user has only one button on the screen
+//hides one button and shows the other when button is clicked, 
+//so that the user has only one of these buttons on their screen
 function changeBtn() {
   checkBtn.classList.toggle('hide');
   nextBtn.classList.toggle('hide');
