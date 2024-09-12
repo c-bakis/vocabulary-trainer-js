@@ -6,17 +6,17 @@
 }
 
 :root {
-    --background: #02121a;
-    --seconderyBackground: #032e46;
-    --text:rgb(195, 227, 255);
-    --purple:#5800bdd7;
-    --teal:#0edbff;
+    --background: #000000;
+    --seconderyBackground: #43008f;
+    --input-color:#0e001a;
+    --text-color-button:#e0dddd;
+    --text-color: #ffffff;
 }
 
 body {
     background-color: var(--background);
-    color:var(--teal);
-    font-size: 200%;
+    color:var(--text-color);
+    font-size: 180%;
 }
 .container {
     width: 75%;
@@ -27,9 +27,9 @@ body {
     justify-content: center;
     max-width: 500px;
     margin: 8% auto 5% auto;
-    border: 2px solid var(--purple);
-    border-radius: 30px;
-    box-shadow: #032e46;
+    border: 2px solid var(--seconderyBackground);
+    border-radius: 3px;
+    box-shadow: 3px 3px 12px 1px var(--seconderyBackground);
     
 }
 input{
@@ -38,11 +38,12 @@ input{
     height: 2vh;
     width: 80%;
     flex: 1;
-    background-color: var(--seconderyBackground);
-    color: var(--text);
+    background-color: var(--input-color);
+    color: var(--text-color);
     margin: 2% 0 5% 0;
-    border:1px solid var(--purple);
-    border-radius: 10px; 
+    border:1px solid var(--seconderyBackground);
+    box-shadow: 1px 1px 12px 1px var(--seconderyBackground);
+    border-radius: 3px; 
 }
 .item-label {
     margin:1.5% 0 0 0;
@@ -58,7 +59,8 @@ input{
     font-size: 30px;
     font-weight: bold;
     background-color: var(--seconderyBackground);
-    color: var(--teal);
+    color: var(--text-color-button);
+    box-shadow: 1px 1px 12px 1px var(--seconderyBackground);
     margin: 1% auto;
     border: 0;
     border-radius: 50%;
@@ -75,7 +77,7 @@ input{
     font-size: 20px;
     font-weight: bold;
     background-color: var(--seconderyBackground);
-    color: var(--teal);
+    color: var(--text-color-button);
     margin: 1% auto;
     border: 0;
     border-radius: 50%;
@@ -90,7 +92,7 @@ input{
     font-size: 15px;
     font-weight: bold;
     background-color: var(--seconderyBackground);
-    color: var(--teal);
+    color: var(--text-color);
     margin: auto;
     border: 0;
     border-radius: 50%;
@@ -101,7 +103,7 @@ li {
     width: 70%;
     display:inline-block;
     font-size: 18px;
-    color: var(--teal);
+    color: var(--text-color);
     margin: auto;
     text-align: center;
     
@@ -123,6 +125,7 @@ h1 {
 
 #checkAnswer {
  text-align: center;
+    font-size: 75%;
 }
 
 .hide {
