@@ -16,7 +16,7 @@
 body {
     background-color: var(--background);
     color:var(--text-color);
-    font-size: 180%;
+    font-size: 160%;
 }
 .container {
     width: 75%;
@@ -30,12 +30,16 @@ body {
     border: 2px solid var(--seconderyBackground);
     border-radius: 3px;
     box-shadow: 3px 3px 12px 1px var(--seconderyBackground);
-    
+}
+.list-container {
+    height: 8vh;
+    padding: 1%;
+    margin: 4% auto 2% auto;
 }
 input{
     padding: 3%;
     font-size: 60%;
-    height: 2vh;
+    height: 1.5vh;
     width: 80%;
     flex: 1;
     background-color: var(--input-color);
@@ -69,14 +73,15 @@ input{
 }
 
 .list-button {
-    width: 6%;
-    height: 6vh;
+    width: 5%;
+    height: 5vh;
     display: flex;
     flex-direction:row;
     justify-content: center;
     font-size: 20px;
     font-weight: bold;
     background-color: var(--seconderyBackground);
+    box-shadow: 1px 1px 12px 1px var(--seconderyBackground);
     color: var(--text-color-button);
     margin: 1% auto;
     border: 0;
@@ -87,7 +92,8 @@ input{
 
 
 .button-klein {
-    width: 10%;
+    width: 3%;
+    height: 2.5vh;
     display:inline-block;
     font-size: 15px;
     font-weight: bold;
@@ -96,17 +102,17 @@ input{
     margin: auto;
     border: 0;
     border-radius: 50%;
-    max-width: 500px;
+    
     cursor: pointer;
 }
 li {
-    width: 70%;
+    width: 50%;
     display:inline-block;
-    font-size: 18px;
+    font-size: 60%;
     color: var(--text-color);
     margin: auto;
     text-align: center;
-    
+    max-width: 500px;
     
 }
 
@@ -115,7 +121,7 @@ li {
     flex-direction: row;
     justify-content: center;
     text-align: center;
-    width: 60%;
+    width: 50%;
     height: 2vh;
     margin: 1% 0 0 10%;
 }
