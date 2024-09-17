@@ -51,22 +51,26 @@ const deleteVocab = (element) => {
         console.log(dictionary);
 };
 
-//adding check and next buttons by id for the next steps
+//here starts script for training page, for a query from german to english
 const checkBtn = document.getElementById('checkBtn');
 const nextBtn = document.getElementById('nextBtn');
 const checkAnswerCorrect = document.getElementById('checkAnswer');
+const showAnswer = document.getElementById('showAnswer');
 
 let indexGerman;
 
 //generates a random Item from dictionary in german by clicking on next button
 function nextVocabulary() {
   answer.value = '';
+  checkAnswerCorrect.innerHTML = '';
+  showAnswer.innerHTML = '';
   let dictio = dictionary.map(dictionary => dictionary.german);
   let randomNum = Math.floor(Math.random() *dictio.length);
   let word = document.getElementById("word");
   word.innerHTML = `${dictio[randomNum]}?`;
   indexGerman = dictio.findIndex(german => german == dictio[randomNum]);
   
+  defaultCheckAnswer();
   changeBtn();
 
   return indexGerman;
@@ -79,10 +83,12 @@ function checkAnswer() {
     if(indexEnglish === indexGerman) {
         checkAnswerCorrect.textContent = 'Right answer!';
     } else {
-      checkAnswerCorrect.textContent = 'Sorry, that`s not the answer';
+      checkAnswerCorrect.innerHTML = `Sorry, that's not the answer <button class="show-answer-button">display answer?</button>;`
+      showAnswer.innerHTML = `${indexMapEnglish[indexGerman]}`
     }
+
   console.log(indexEnglish);
-  console.log(indexMapEnglish);
+  console.log(indexMapEnglish[indexGerman]);
   console.log(indexGerman);
   
   changeBtn();
@@ -92,6 +98,16 @@ function checkAnswer() {
 function changeBtn() {
   checkBtn.classList.toggle('hide');
   nextBtn.classList.toggle('hide');
-
 }
 
+// shows right answer onclick if answer was wrong
+checkAnswerCorrect.addEventListener('click', ()  => {
+  checkAnswerCorrect.classList.toggle('hide');
+  showAnswer.classList.toggle('hide');
+});
+
+//hiding showAnswer and showing checkAnswerCorrect if class was toggled
+function defaultCheckAnswer () {
+  checkAnswerCorrect.classList.remove('hide');
+  showAnswer.classList.add('hide');
+}

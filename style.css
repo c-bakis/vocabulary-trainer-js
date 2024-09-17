@@ -102,7 +102,20 @@ input{
     margin: auto;
     border: 0;
     border-radius: 50%;
-    
+    cursor: pointer;
+}
+.show-answer-button {
+    width: 9%;
+    height: 4vh;
+    display:inline-block;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--seconderyBackground);
+    color: var(--text-color);
+    box-shadow: 1px 1px 12px 1px var(--seconderyBackground);
+    margin: auto;
+    border: 0;
+    border-radius: 35%;
     cursor: pointer;
 }
 li {
@@ -129,7 +142,7 @@ h1 {
     font-size: 150%;
 }
 
-#checkAnswer {
+.answerCorrect {
  text-align: center;
     font-size: 75%;
 }
