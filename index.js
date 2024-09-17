@@ -57,41 +57,63 @@ const nextBtn = document.getElementById('nextBtn');
 const checkAnswerCorrect = document.getElementById('checkAnswer');
 const showAnswer = document.getElementById('showAnswer');
 
+let mapGerman = dictionary.map(dictionary => dictionary.german);
+let mapEnglish = dictionary.map(dictionary => dictionary.english);
+ let askedVocab = [];
 let indexGerman;
+let countRightAnswers = 0;
 
 //generates a random Item from dictionary in german by clicking on next button
 function nextVocabulary() {
   answer.value = '';
   checkAnswerCorrect.innerHTML = '';
   showAnswer.innerHTML = '';
-  let dictio = dictionary.map(dictionary => dictionary.german);
-  let randomNum = Math.floor(Math.random() *dictio.length);
+  let randomNum = Math.floor(Math.random() *mapGerman.length);
   let word = document.getElementById("word");
-  word.innerHTML = `${dictio[randomNum]}?`;
-  indexGerman = dictio.findIndex(german => german == dictio[randomNum]);
+  word.innerHTML = `${mapGerman[randomNum]}?`;
+  let randomWord = mapGerman[randomNum];
   
+  findGermanIndex(randomWord);
   defaultCheckAnswer();
   changeBtn();
-
+}  
+//find index of german word
+function findGermanIndex (randomWord) {
+  indexGerman = mapGerman.findIndex(german => german == randomWord);
   return indexGerman;
-}
+}/**/
 //checks if anser input is correct by clicking on check button
 function checkAnswer() {
-  
-  let indexMapEnglish = dictionary.map(dictionary => dictionary.english);
-  let indexEnglish = indexMapEnglish.findIndex(english => english == answer.value);
+  console.log(mapGerman);
+  let indexEnglish = mapEnglish.findIndex(english => english == answer.value);
     if(indexEnglish === indexGerman) {
         checkAnswerCorrect.textContent = 'Right answer!';
+        countRightAnswers ++
     } else {
-      checkAnswerCorrect.innerHTML = `Sorry, that's not the answer <button class="show-answer-button">display answer?</button>;`
-      showAnswer.innerHTML = `${indexMapEnglish[indexGerman]}`
+      checkAnswerCorrect.innerHTML = `Sorry, that's not the answer <button class="show-answer-button">display answer?</button>`;
+      showAnswer.innerHTML = `${mapEnglish[indexGerman]}`
     }
-
-  console.log(indexEnglish);
-  console.log(indexMapEnglish[indexGerman]);
-  console.log(indexGerman);
-  
+  newArray();
+  deleteFromQuery()
   changeBtn();
+
+  if (mapGerman.length === 0) {
+    console.log(mapGerman.length, dictionary.length);
+    alert(` Score: ${countRightAnswers}/${dictionary.length}`)
+  }
+
+}
+
+function deleteFromQuery () {
+mapEnglish.splice(indexGerman, 1);
+mapGerman.splice(indexGerman, 1);
+}
+
+function newArray () {
+  let english = mapEnglish[indexGerman];
+  let german = mapGerman[indexGerman]
+  let obj = {'english': english, 'german': german}
+  askedVocab.push(obj);
 }
 //hides one button and shows the other when button is clicked, 
 //so that the user has only one of these buttons on their screen
