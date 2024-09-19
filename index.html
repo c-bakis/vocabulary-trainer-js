@@ -6,15 +6,58 @@
     <title>Vokabel-App</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body> <!--onload="updateItemList()"-->
+    <div id="main">
     <div class="container">
-        <a class="button" href="training.html">Start Training</a>
+        <button id="start-training" class="button">Start Training</button>
     </div>
 
     <div class="container">
-        <a class="button" href="list.html">List</a>
+        <button id="to-list-page" class="button">List</button>
     </div>
+    </div>
+    <div id="list" class="hide">
+        <form action="#">
+          <div class="container list-container">
+            <label class="item-label" for="german">german</label>
+            <input class="add-item german" type="text" id="german" />
+          </div>
+          <div class="container list-container">
+            <label class="item-label" for="english">english</label>
+            <input class="add-item english" type="text" id="english" />
+          </div>
+          <div>
+            <button id="addItemBtn" onclick="addVocabulary(); return false;" class="list-button" type="submit">
+              +
+            </button>
+            <button class="to-main-page list-button">back</button>
+          </div>
+        </form>
     
+        <ul class="vocabulary-list" id="vocabularyList"></ul>
+    </div>
+    <div id="training" class="hide">
+        <div class="container">
+          <h1 id="word"></h1>
+        </div>
+        <form action="#">
+          <div class="container">
+            <input class="answer" type="text" id="answer" />
+            <button id="checkBtn" class="list-button hide" onclick="checkAnswer(); return false;">check</button>
+            <button id="nextBtn" class="list-button" onclick="nextVocabulary(); return false;">next</button>
+          </div>
+        </form>
+        
+          <div>
+            <p class="answerCorrect" id="checkAnswer"> </p><p class="answerCorrect hide" id="showAnswer"> </p>
+          </div>
+          <div class="btn-container">
+            <button class="to-main-page button">back</button>
+          </div>
+        </div>
+        
+    
+
     <script src="index.js"></script>
 </body>
 </html>

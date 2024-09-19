@@ -1,4 +1,31 @@
 
+// switch between pages
+const listPage = document.getElementById('list');
+const trainingPage = document.getElementById('training');
+const mainPage = document.getElementById('main');
+const backBtn = document.querySelectorAll('.to-main-page');
+const listPageBtn = document.getElementById('to-list-page');
+const trainingBtn = document.getElementById('start-training');
+
+trainingBtn.addEventListener('click', () => {
+  trainingPage.classList.toggle('hide');
+  mainPage.classList.toggle('hide');
+});
+listPageBtn.addEventListener('click', () => {
+  listPage.classList.toggle('hide');
+  mainPage.classList.toggle('hide');
+  updateItemList();
+});
+for (let i = 0; i < backBtn.length; i++) {
+  console.log(backBtn[i]);
+  backBtn[i].addEventListener('click', () => {
+  mainPage.classList.remove('hide');
+  trainingPage.classList.add('hide');
+  listPage.classList.add('hide');
+});
+}
+
+// listpage
 const answer = document.getElementById('answer');
 const german = document.querySelector("#german");
 const english = document.querySelector("#english");
@@ -6,6 +33,7 @@ const addItemBtn = document.getElementById('addItemBtn');
 const vocabList = document.getElementById("vocabularyList");
 let dictionary =  JSON.parse(localStorage.getItem('dictionary') || []);
 let item = {};
+
 
 
 // adds new Items to dictionary and local storage and calls updateItemList function
@@ -33,14 +61,14 @@ const updateItemList = () => {
     if (localStorage.getItem('dictionary') !== null || undefined) {
     Object.values(dictionary).forEach(item =>{
       vocabList.innerHTML += `<li id="${item.id}"><span class="list-item">${item.german} - ${item.english}</span><button class="button-klein delete" onclick="deleteVocab(this)">x</button></li>`;
-      
+    
     });
     } else {
       return
     } 
 } 
 
-//find index of clicked parent element, deletes item by index from dictionary and local storage and updates ItemList
+//onclick find index of parent element, deletes item by index from dictionary and local storage, updates ItemList
 const deleteVocab = (element) => {
   let dictionaryId = dictionary.map(dictionary => dictionary.id);
   let index = dictionaryId.findIndex(id => id == element.parentNode.id);
@@ -51,7 +79,7 @@ const deleteVocab = (element) => {
         console.log(dictionary);
 };
 
-//here starts script for training page, for a query from german to english
+// training page
 const checkBtn = document.getElementById('checkBtn');
 const nextBtn = document.getElementById('nextBtn');
 const checkAnswerCorrect = document.getElementById('checkAnswer');
@@ -59,30 +87,38 @@ const showAnswer = document.getElementById('showAnswer');
 
 let mapGerman = dictionary.map(dictionary => dictionary.german);
 let mapEnglish = dictionary.map(dictionary => dictionary.english);
- let askedVocab = [];
+let askedVocab = [];
 let indexGerman;
 let countRightAnswers = 0;
+let countProgress = 0;
 
-//generates a random Item from dictionary in german by clicking on next button
+// onclick next button
 function nextVocabulary() {
   answer.value = '';
+  countProgress ++;
   checkAnswerCorrect.innerHTML = '';
   showAnswer.innerHTML = '';
-  let randomNum = Math.floor(Math.random() *mapGerman.length);
-  let word = document.getElementById("word");
-  word.innerHTML = `${mapGerman[randomNum]}?`;
-  let randomWord = mapGerman[randomNum];
-  
-  findGermanIndex(randomWord);
+
+  generateRandomWord(mapGerman);
   defaultCheckAnswer();
   changeBtn();
 }  
-//find index of german word
+
+function generateRandomWord(item) {
+  let randomNum = Math.floor(Math.random() *item.length);
+  let word = document.getElementById("word");
+  word.innerHTML = `${item[randomNum]}?`;
+  let randomWord = item[randomNum];
+
+  findGermanIndex(randomWord);
+}
+
 function findGermanIndex (randomWord) {
   indexGerman = mapGerman.findIndex(german => german == randomWord);
   return indexGerman;
+  
 }/**/
-//checks if anser input is correct by clicking on check button
+//onclick check button
 function checkAnswer() {
   console.log(mapGerman);
   let indexEnglish = mapEnglish.findIndex(english => english == answer.value);
