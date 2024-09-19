@@ -90,26 +90,50 @@ let mapGerman = dictionary.map(dictionary => dictionary.german);
 let mapEnglish = dictionary.map(dictionary => dictionary.english);
 let askedVocab = [];
 let indexGerman;
+let indexEnglish;
 let countRightAnswers = 0;
 let countProgress = 0;
 
 // onclick next button
-function nextVocabulary() {
+function nextVocabularyGerman() {
+  clear()
+  currentProgress(); 
+  generateRandomWord(mapGerman);
+  changeBtn();
+  defaultCheckAnswer();
+  checkFinish(mapEnglish);
+}  
+
+function nextVocabularyEnglish() {
+  clear()
+  currentProgress(); 
+  generateRandomWord(mapEnglish);
+  changeBtn();
+  defaultCheckAnswer();
+}  
+
+function checkFinish(map) {
+  if (map.length === 0) {
+    finish(map);
+  } 
+}
+
+function clear () {
   answer.value = '';
   checkAnswerCorrect.innerHTML = '';
   showAnswer.innerHTML = '';
-
-  generateRandomWord(mapGerman);
-  defaultCheckAnswer();
-  changeBtn();
-  currentProgress();
-}  
+}
 
 function currentProgress() {
   countProgress ++;
   let total = dictionary.length;
   progress.innerHTML = `${countProgress}/${total}`;
   progress.classList.add('progress');
+  if (countProgress === dictionary.length) {
+    nextBtn.textContent = 'finish';
+  } else {
+    nextBtn.textContent = 'next';
+  }
 }
 
 function generateRandomWord(item) {
@@ -117,36 +141,52 @@ function generateRandomWord(item) {
   let word = document.getElementById("word");
   word.innerHTML = `${item[randomNum]}?`;
   let randomWord = item[randomNum];
+  console.log(this);
 
   findGermanIndex(randomWord);
 }
 
 function findGermanIndex (randomWord) {
   indexGerman = mapGerman.findIndex(german => german == randomWord);
-  return indexGerman;
+   return indexGerman;
+}
+function findEnglishIndex (randomWord) {
+  indexEnglish = mapEnglish.findIndex(english => english == randomWord);
+  return indexEnglish;
+}
+//display only one button at a time
+function changeBtn() {
+  checkBtn.classList.toggle('hide');
+  nextBtn.classList.toggle('hide');
+}
+//hiding showAnswer and showing checkAnswerCorrect if class was toggled
+function defaultCheckAnswer () {
+  checkAnswerCorrect.classList.remove('hide');
+  showAnswer.classList.add('hide');
+}
 
-}/**/
+/**/
 //onclick check button
 function checkAnswer() {
-  console.log(mapGerman);
-  let indexEnglish = mapEnglish.findIndex(english => english == answer.value);
-    if(indexEnglish === indexGerman) {
-        checkAnswerCorrect.textContent = 'Right answer!';
-        countRightAnswers ++
-    } else {
-      checkAnswerCorrect.innerHTML = `Sorry, that's not the answer <button class="show-answer-button">display answer?</button>`;
-      showAnswer.innerHTML = `${mapEnglish[indexGerman]}`
-    }
-  newArray();
+  indexEnglish = mapEnglish.findIndex(english => english == answer.value);
+  answerRight(mapEnglish);
   deleteFromQuery()
   changeBtn();
-
-  if (mapGerman.length === 0) {
-    console.log(mapGerman.length, dictionary.length);
-    alert(` Score: ${countRightAnswers}/${dictionary.length}`)
-  }
-
 }
+
+
+function answerRight (map) {
+  if(indexEnglish === indexGerman && map.length !== 0) {
+    checkAnswerCorrect.textContent = 'Right answer!';
+    countRightAnswers ++
+} else if (indexEnglish !== indexGerman && map.length !== 0) {
+  checkAnswerCorrect.innerHTML = `Sorry, that's not the answer <button class="show-answer-button">display answer?</button>`;
+  showAnswer.innerHTML = `${map[indexGerman]}`
+  newArray();
+} else {
+  return
+}}
+
 
 function deleteFromQuery () {
 mapEnglish.splice(indexGerman, 1);
@@ -159,12 +199,6 @@ function newArray () {
   let obj = {'english': english, 'german': german}
   askedVocab.push(obj);
 }
-//hides one button and shows the other when button is clicked, 
-//so that the user has only one of these buttons on their screen
-function changeBtn() {
-  checkBtn.classList.toggle('hide');
-  nextBtn.classList.toggle('hide');
-}
 
 // shows right answer onclick if answer was wrong
 checkAnswerCorrect.addEventListener('click', ()  => {
@@ -172,8 +206,23 @@ checkAnswerCorrect.addEventListener('click', ()  => {
   showAnswer.classList.toggle('hide');
 });
 
-//hiding showAnswer and showing checkAnswerCorrect if class was toggled
-function defaultCheckAnswer () {
-  checkAnswerCorrect.classList.remove('hide');
-  showAnswer.classList.add('hide');
+// show Score, button for new Query and button for only wrong ansered query
+function finish(map) {
+  console.log(map.length, dictionary.length);
+  let word = document.getElementById("word");
+  word.textContent = `Your Score:   ${countRightAnswers}/${dictionary.length}`
+  progress.classList.toggle('progress');
+  progress.textContent = '';
+  checkBtn.classList.toggle('hide');
+  answer.classList.toggle('hide');
+  const answerContainer = document.getElementById('answer-container')
+  answerContainer.innerHTML += `<button class="list-button">new query</button><button class="list-button">wrong ones again</button>`
+}
+
+function wronVocabAgain() {
+
+}
+
+function startNewQuery() {
+
 }
