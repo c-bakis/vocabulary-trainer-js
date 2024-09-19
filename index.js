@@ -84,6 +84,7 @@ const checkBtn = document.getElementById('checkBtn');
 const nextBtn = document.getElementById('nextBtn');
 const checkAnswerCorrect = document.getElementById('checkAnswer');
 const showAnswer = document.getElementById('showAnswer');
+const progress = document.getElementById('progress');
 
 let mapGerman = dictionary.map(dictionary => dictionary.german);
 let mapEnglish = dictionary.map(dictionary => dictionary.english);
@@ -95,14 +96,21 @@ let countProgress = 0;
 // onclick next button
 function nextVocabulary() {
   answer.value = '';
-  countProgress ++;
   checkAnswerCorrect.innerHTML = '';
   showAnswer.innerHTML = '';
 
   generateRandomWord(mapGerman);
   defaultCheckAnswer();
   changeBtn();
+  currentProgress();
 }  
+
+function currentProgress() {
+  countProgress ++;
+  let total = dictionary.length;
+  progress.innerHTML = `${countProgress}/${total}`;
+  progress.classList.add('progress');
+}
 
 function generateRandomWord(item) {
   let randomNum = Math.floor(Math.random() *item.length);
@@ -116,7 +124,7 @@ function generateRandomWord(item) {
 function findGermanIndex (randomWord) {
   indexGerman = mapGerman.findIndex(german => german == randomWord);
   return indexGerman;
-  
+
 }/**/
 //onclick check button
 function checkAnswer() {

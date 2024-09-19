@@ -6,7 +6,7 @@
     <title>Vokabel-App</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body> <!--onload="updateItemList()"-->
+<body>
     <div id="main">
     <div class="container">
         <button id="start-training" class="button">Start Training</button>
@@ -37,8 +37,9 @@
         <ul class="vocabulary-list" id="vocabularyList"></ul>
     </div>
     <div id="training" class="hide">
-        <div class="container">
+        <div class="container query-container">
           <h1 id="word"></h1>
+          <p id="progress"></p>
         </div>
         <form action="#">
           <div class="container">
