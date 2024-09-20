@@ -9,11 +9,13 @@
 <body>
     <div id="main">
     <div class="container">
-        <button id="start-training" class="button">Start Training</button>
+        <button id="start-training-ger" class="button">Start Query german - english</button>
     </div>
-
     <div class="container">
-        <button id="to-list-page" class="button">List</button>
+      <button id="start-training-eng" class="button">Start Query english - german</button>
+  </div>
+    <div class="container">
+        <button id="to-list-page" class="button">My Vocabulary List</button>
     </div>
     </div>
     <div id="list" class="hide">
@@ -40,15 +42,20 @@
         <div class="container query-container">
           <h1 id="word"></h1>
           <p id="progress"></p>
+          <button id="new-training-ger" class="button hide">Query german - english</button>
         </div>
         <form action="#">
           <div id="answer-container" class="container answer-container">
             <input class="answer" type="text" id="answer" />
-            <button id="checkBtn" class="list-button hide" onclick="checkAnswer(); return false;">check</button>
-            <button id="nextBtn" class="list-button" onclick="nextVocabularyGerman(); return false;">next</button>
+            <button id="checkBtnGer" class="list-button hide" onclick="checkAnswerGer(); return false;">check</button>
+            <button id="nextBtnGer" class="list-button" onclick="nextVocabularyGer(); return false;">next</button>
+            <button id="checkBtnEng" class="list-button hide" onclick="checkAnswerEng(); return false;">check</button>
+            <button id="nextBtnEng" class="list-button" onclick="nextVocabularyEng(); return false;">next</button>
+            <button id="new-training-eng" class="button hide">Query english - german</button>
               <div class="finish-btn-container">
               <button id="newQuery" class="finish-button hide" onclick="startNewQuery()">new query</button>
               <button id="wrongAgain" class="finish-button hide" onclick="wronVocabAgain(); return false;">wrong ones again</button>
+              
             </div>
           </div>
         </form>
