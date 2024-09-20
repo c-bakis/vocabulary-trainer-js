@@ -38,10 +38,8 @@ Look at your list of vocabulary and delete vocabulary that you no longer need.
 
 ### What am I currently working on?
 
-- Possibility to display the correct answer if answer was wrong
-- Each vocabulary word should only be asked once
-- A count of progress and a Score
-- Possibility of a query from english to german
+- reset function
+- possibility for asking only wrong answered vocabulary again
 
 ### Why a vocabulary trainer?
 
