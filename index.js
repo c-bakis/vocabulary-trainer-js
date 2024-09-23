@@ -301,7 +301,7 @@ function startNewQuery() {
   currentQuery.classList.add('hide');
 }
 // asking only wrong ansered vocabulary
-function wronVocabAgain() {
+function wrongVocabAgain() {
   mapGerman = wrongAnsweredVocab.map(askedVocab => askedVocab.german);
   mapEnglish = wrongAnsweredVocab.map(askedVocab => askedVocab.english);
   toggleWronAndNewQueryBtn();
