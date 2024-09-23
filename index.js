@@ -7,20 +7,32 @@ const backBtn = document.querySelectorAll('.to-main-page');
 const listPageBtn = document.getElementById('to-list-page');
 const queryBtnGer = document.getElementById('start-training-ger');
 const queryBtnEng = document.getElementById('start-training-eng');
+const currentQueryBtn = document.getElementById('current-query');
+const currentQuery = document.getElementById('currentQuery');
+let language;
+let total = 0;
 
 queryBtnGer.addEventListener('click', () => {
+  reset();
+  totalOfProgress();
   trainingPage.classList.toggle('hide');
   mainPage.classList.toggle('hide');
   mapEnglishGerman();
   nextBtnEng.classList.add('hide');
   nextBtnGer.classList.remove('hide');
+  language = 'german';
+  console.log(language);
+
 });
 queryBtnEng.addEventListener('click', () => {
+  reset();
+  totalOfProgress();
   trainingPage.classList.toggle('hide');
   mainPage.classList.toggle('hide');
   mapEnglishGerman();
   nextBtnGer.classList.add('hide');
   nextBtnEng.classList.remove('hide');
+  language = 'english';
 });
 listPageBtn.addEventListener('click', () => {
   listPage.classList.toggle('hide');
@@ -28,15 +40,21 @@ listPageBtn.addEventListener('click', () => {
   updateItemList();
 });
 for (let i = 0; i < backBtn.length; i++) {
-  console.log(backBtn[i]);
   backBtn[i].addEventListener('click', () => {
   mainPage.classList.remove('hide');
   trainingPage.classList.add('hide');
   listPage.classList.add('hide');
+  if (total !== 0){
+    currentQuery.classList.remove('hide');
+  }
 });
 }
+currentQueryBtn.addEventListener('click', () => {
+  trainingPage.classList.toggle('hide');
+  mainPage.classList.toggle('hide');
+});
 
-// listpage
+// listpage:
 const answer = document.getElementById('answer');
 const german = document.querySelector("#german");
 const english = document.querySelector("#english");
@@ -88,7 +106,7 @@ const deleteVocab = (element) => {
         console.log(dictionary);
 };
 
-// training page
+// training page:
 const checkBtnGer = document.getElementById('checkBtnGer');
 const nextBtnGer = document.getElementById('nextBtnGer');
 const checkBtnEng = document.getElementById('checkBtnEng');
@@ -107,8 +125,6 @@ let countRightAnswers = 0;
 let countProgress = 0;
 
 // english or german query
-
-
 function mapEnglishGerman() {
   mapGerman = dictionary.map(dictionary => dictionary.german);
   mapEnglish = dictionary.map(dictionary => dictionary.english);
@@ -117,7 +133,7 @@ function mapEnglishGerman() {
 // onclick next button
 function nextVocabularyGer() {
   clear()
-  currentProgress(dictionary); 
+  currentProgress(); 
   generateRandomWord(mapGerman);
   changeBtnGer();
   defaultCheckAnswer();
@@ -126,7 +142,7 @@ function nextVocabularyGer() {
 
 function nextVocabularyEng() {
   clear()
-  currentProgress(dictionary); 
+  currentProgress(); 
   generateRandomWord(mapEnglish);
   changeBtnEng();
   defaultCheckAnswer();
@@ -145,12 +161,11 @@ function clear () {
   showAnswer.innerHTML = '';
 }
 
-function currentProgress(map) {
+function currentProgress() {
   countProgress ++;
-  let total = map.length;
   progress.innerHTML = `${countProgress}/${total}`;
   progress.classList.add('progress');
-  if (countProgress === map.length) {
+  if (countProgress === total) {
     nextBtnGer.textContent = 'finish';
     nextBtnEng.textContent = 'finish';
   } else {
@@ -158,11 +173,18 @@ function currentProgress(map) {
     nextBtnEng.textContent = 'next';
   }
 }
+const totalOfProgress = () => {
+  if (wrongAnsweredVocab.length !== 0) {
+    total = wrongAnsweredVocab.length;
+  } else {
+    total = dictionary.length;
+  }
+}
 
-function generateRandomWord(item) {
-  let randomNum = Math.floor(Math.random() *item.length);
-  word.innerHTML = `${item[randomNum]}?`;
-  let randomWord = item[randomNum];
+function generateRandomWord(map) {
+  let randomNum = Math.floor(Math.random() *map.length);
+  word.innerHTML = `${map[randomNum]}?`;
+  let randomWord = map[randomNum];
   findRandWordIndex(randomWord, randomNum);
 }
 
@@ -175,8 +197,6 @@ function findRandWordIndex (randomWord, randomNum) {
   return indexEnglish;
 }}
 
-
-//display only one button at a time
 function changeBtnGer() {
   checkBtnGer.classList.toggle('hide');
   nextBtnGer.classList.toggle('hide');
@@ -185,12 +205,10 @@ function changeBtnEng() {
   checkBtnEng.classList.toggle('hide');
   nextBtnEng.classList.toggle('hide');
 }
-//hiding showAnswer and showing checkAnswerCorrect if class was toggled
 function defaultCheckAnswer () {
   checkAnswerCorrect.classList.remove('hide');
   showAnswer.classList.add('hide');
 }
-
 /**/
 //onclick check button
 function checkAnswerGer() {
@@ -215,7 +233,6 @@ function answerRight (map) {
 } else if (indexEnglish !== indexGerman && map.length !== 0 && indexGerman !== -1) {
   checkAnswerCorrect.innerHTML = `Sorry, that's not the answer <button class="show-answer-button">display answer?</button>`;
   showAnswer.innerHTML = `${map[indexGerman]}`
-  console.log(indexGerman);
   wrongAnswers(indexGerman);
 } else if (indexEnglish !== indexGerman && map.length !== 0 && indexEnglish !== -1) {
   checkAnswerCorrect.innerHTML = `Sorry, that's not the answer <button class="show-answer-button">display answer?</button>`;
@@ -224,7 +241,6 @@ function answerRight (map) {
 } else {
   return
 }}
-
 
 function deleteFromQuery (index) {
 mapEnglish.splice(index, 1);
@@ -237,62 +253,68 @@ function wrongAnswers (index) {
   let obj = {'english': english, 'german': german}
   wrongAnsweredVocab.push(obj);
 }
-
 // shows right answer onclick if answer was wrong
 checkAnswerCorrect.addEventListener('click', ()  => {
   checkAnswerCorrect.classList.toggle('hide');
   showAnswer.classList.toggle('hide');
 });
 
+//after finisching query:
 // show Score, button for new Query and button for only wrong ansered query
 function finish() {
-  word.textContent = `Your Score:   ${countRightAnswers}/${dictionary.length}`
+  word.textContent = `Your Score:   ${countRightAnswers}/${total}`
   progress.textContent = '';
+  if (total !== 0 && wrongAnsweredVocab.length !== 0) {
+    toggleWronAndNewQueryBtn();
+  } else {
+    const newQueryBtn = document.getElementById('newQuery');
+    newQueryBtn.classList.toggle('hide');
+  }
   toggleTrainingPage();
-  toggleWronAndNewQueryBtn();
+  
 }
-
-// after finishing a query, need reset function?
-function startNewQuery() {
+// reset is called whith click on start query
+function reset() {
   countRightAnswers = 0;
   countProgress = 0;
+  progress.textContent = '';
+  progress.classList.remove('progress');
   word.textContent = '';
-  answer.classList.toggle('hide');
+  wrongAnsweredVocab = [];
+  answer.classList.remove('hide');
+  answer.value = '';
+  nextBtnGer.classList.add('hide');
+  nextBtnEng.classList.add('hide');
+  checkBtnGer.classList.add('hide');
+  checkBtnEng.classList.add('hide');
+  nextBtnGer.textContent = 'next';
+  nextBtnEng.textContent = 'next';
+  checkAnswerCorrect.textContent = '';
+  removeWronAndNewQueryBtn();
+  defaultCheckAnswer();
+}
+// back to main page
+function startNewQuery() {
   trainingPage.classList.toggle('hide');
   mainPage.classList.toggle('hide');
   toggleWronAndNewQueryBtn();
-  console.log(mapGerman)
+  currentQuery.classList.add('hide');
 }
-
-// currently: create new page for only asking wrong answered vocabulary
-/*function wronVocabAgain() {
-  countRightAnswers = 0;
-  countProgress = 0;
+// asking only wrong ansered vocabulary
+function wronVocabAgain() {
   mapGerman = wrongAnsweredVocab.map(askedVocab => askedVocab.german);
   mapEnglish = wrongAnsweredVocab.map(askedVocab => askedVocab.english);
   toggleWronAndNewQueryBtn();
-  toggleNewQueryBtn();
-  console.log(mapGerman);
+  totalOfProgress();
+  reset();
+  if(language === 'german') {
+    nextBtnGer.classList.remove('hide');
+  } else if(language === 'english') {
+    nextBtnEng.classList.remove('hide');
+  } else {
+    startNewQuery();
+  }
 }
-
-const newQueryGerBtn = document.getElementById('new-training-ger');
-newQueryGerBtn.addEventListener('click', () => {
-  nextBtnGer.classList.toggle('hide');
-  toggleNewQueryBtn();
-  toggleTrainingPage();
-});
-
-const newQueryEngBtn = document.getElementById('new-training-eng');
-newQueryEngBtn.addEventListener('click', () => {
-  nextBtnEng.classList.toggle('hide');
-  toggleNewQueryBtn();
-  toggleTrainingPage();
-});
-
-const toggleNewQueryBtn = () => {
-  newQueryGerBtn.classList.toggle('hide');
-  newQueryEngBtn.classList.toggle('hide');
-}*/
 
 function toggleTrainingPage() {
   checkBtnGer.classList.add('hide');
@@ -306,3 +328,11 @@ const toggleWronAndNewQueryBtn = () => {
   wrongAgainBtn.classList.toggle('hide');
   newQueryBtn.classList.toggle('hide');
 }
+const removeWronAndNewQueryBtn = () => {
+  const wrongAgainBtn = document.getElementById('wrongAgain');
+  const newQueryBtn = document.getElementById('newQuery');
+  wrongAgainBtn.classList.add('hide');
+  newQueryBtn.classList.add('hide');
+}
+/*
+*/

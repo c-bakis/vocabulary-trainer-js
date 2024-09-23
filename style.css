@@ -19,14 +19,14 @@ body {
     font-size: 160%;
 }
 .container {
-    width: 75%;
+    width: 80%;
     height: 10vh;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     max-width: 500px;
-    margin: 8% auto 5% auto;
+    margin: 6% auto 7% auto;
     border: 2px solid var(--seconderyBackground);
     border-radius: 3px;
     box-shadow: 3px 3px 12px 1px var(--seconderyBackground);
@@ -34,14 +34,14 @@ body {
 .list-container {
     height: 8vh;
     padding: 1%;
+    max-width: 500px;
     margin: 4% auto 2% auto;
 }
 input{
     padding: 3%;
     font-size: 60%;
-    height: 1.5vh;
+    height: 1.3vh;
     width: 80%;
-    flex: 1;
     background-color: var(--input-color);
     color: var(--text-color);
     margin: 2% 0 5% 0;
@@ -51,6 +51,8 @@ input{
 }
 .item-label {
     margin:1.5% 0 0 0;
+    font: optional;
+    font-size: 20px;
 }
 
 .button{
@@ -128,7 +130,7 @@ input{
 
 ul {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     width: 100%;
     padding: 0 10% 0 10%;
@@ -136,8 +138,9 @@ ul {
 
 li {
     display: inline-block;
+    justify-content: center;
     width: 100%;
-    font-size: 60%;
+    font-size: 70%;
     color: var(--text-color);
     margin: auto;
     text-align: center;
@@ -150,6 +153,7 @@ li {
 }
 
 .button-klein {
+    
     width: 20px;
     height: 20px;
     font-size: 15px;

@@ -17,6 +17,9 @@
     <div class="container">
         <button id="to-list-page" class="button">My Vocabulary List</button>
     </div>
+    <div id="currentQuery" class="container hide">
+      <button id="current-query" class="button">Current Vocabulary</button>
+  </div>
     </div>
     <div id="list" class="hide">
         <form action="#">
@@ -42,20 +45,17 @@
         <div class="container query-container">
           <h1 id="word"></h1>
           <p id="progress"></p>
-          <button id="new-training-ger" class="button hide">Query german - english</button>
         </div>
         <form action="#">
           <div id="answer-container" class="container answer-container">
             <input class="answer" type="text" id="answer" />
             <button id="checkBtnGer" class="list-button hide" onclick="checkAnswerGer(); return false;">check</button>
-            <button id="nextBtnGer" class="list-button" onclick="nextVocabularyGer(); return false;">next</button>
+            <button id="nextBtnGer" class="list-button hide" onclick="nextVocabularyGer(); return false;">next</button>
             <button id="checkBtnEng" class="list-button hide" onclick="checkAnswerEng(); return false;">check</button>
-            <button id="nextBtnEng" class="list-button" onclick="nextVocabularyEng(); return false;">next</button>
-            <button id="new-training-eng" class="button hide">Query english - german</button>
+            <button id="nextBtnEng" class="list-button hide" onclick="nextVocabularyEng(); return false;">next</button>
               <div class="finish-btn-container">
               <button id="newQuery" class="finish-button hide" onclick="startNewQuery()">new query</button>
               <button id="wrongAgain" class="finish-button hide" onclick="wronVocabAgain(); return false;">wrong ones again</button>
-              
             </div>
           </div>
         </form>
@@ -67,7 +67,6 @@
             <button class="to-main-page button">back</button>
           </div>
         </div>
-        
     
 
     <script src="index.js"></script>
