@@ -13,12 +13,13 @@
 ## Features
 
 <img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/png/main-page.PNG" alt="main page" width="350"/>
-Start a new training or edit your vocabulary list. 
+Start a new query or edit your vocabulary list and go back to your current query.
 <br clear="left"/>
 <br/>
 
 <img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/png/training-page.PNG" alt="training page" width="350"/>
-Ask vocabulary one by one, answer via input and see immediately whether your answer is correct.
+Ask vocabulary one by one, answer via input and see immediately whether your answer is correct. If your answer was wrong, you can check the right answer.
+After finishing a query you have an option for a query with only incorrectly answered vocabulary.
  <br clear="left"/>
  <br/>
 
@@ -38,8 +39,7 @@ Look at your list of vocabulary and delete vocabulary that you no longer need.
 
 ### What am I currently working on?
 
-- reset function
-- possibility for asking only wrong answered vocabulary again
+- option of an automatic deletion function if a certain vocabulary word was ansered correctly a certain amount of time.
 
 ### Why a vocabulary trainer?
 
