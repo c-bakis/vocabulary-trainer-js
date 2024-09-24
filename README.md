@@ -39,7 +39,7 @@ Look at your list of vocabulary and delete vocabulary that you no longer need.
 
 ### What am I currently working on?
 
-- option of an automatic deletion function if a certain vocabulary word was answered correctly a certain amount of time.
+- option of an automatic deletion function if a certain vocabulary word was answered correctly a certain amount of times.
 
 ### Why a vocabulary trainer?
 
