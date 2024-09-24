@@ -20,39 +20,35 @@ body {
 }
 .container {
     width: 80%;
-    height: 10vh;
+    height: 15vh;
     display:flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    max-width: 500px;
-    margin: 6% auto 7% auto;
+    padding: 12px;
+    margin: 2.25% auto 2% auto;
     border: 2px solid var(--seconderyBackground);
     border-radius: 3px;
     box-shadow: 3px 3px 12px 1px var(--seconderyBackground);
 }
 .list-container {
-    height: 8vh;
-    padding: 1%;
-    max-width: 500px;
-    margin: 4% auto 2% auto;
+    height: 12vh;
+    margin: 2.5% auto 2.5% auto;
 }
 input{
-    padding: 3%;
-    font-size: 60%;
-    height: 1.3vh;
+    font-size: 24px;
+    height: 60%;
     width: 80%;
     background-color: var(--input-color);
     color: var(--text-color);
-    margin: 2% 0 5% 0;
+    margin: 2% 0 2% 0;
     border:1px solid var(--seconderyBackground);
     box-shadow: 1px 1px 12px 1px var(--seconderyBackground);
     border-radius: 3px; 
 }
 .item-label {
-    margin:1.5% 0 0 0;
-    font: optional;
-    font-size: 20px;
+    height: 30%;
+    margin-top: 1.5%;
 }
 
 .button{
@@ -67,7 +63,7 @@ input{
     background-color: var(--seconderyBackground);
     color: var(--text-color-button);
     box-shadow: 2px 2px 12px 3px var(--seconderyBackground);
-    margin: 1% auto;
+    margin: auto;
     border: 0;
     border-radius: 50%;
     max-width: 500px;
@@ -128,32 +124,36 @@ input{
     cursor: pointer;
 }
 
-ul {
-    display: flex;
-    flex-direction: column;
+.ul-container {
+    width: 90%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
+    margin: auto;
+    border: 2px solid var(--seconderyBackground);
+    border-radius: 3px;
+    box-shadow: 3px 3px 12px 1px var(--seconderyBackground);
+}
+
+ul {
     width: 100%;
-    padding: 0 10% 0 10%;
 }
 
 li {
     display: inline-block;
-    justify-content: center;
-    width: 100%;
-    font-size: 70%;
+    width: 50%;
+    height: 2.5vh;
+    font-size: 20px;
     color: var(--text-color);
-    margin: auto;
+    margin: 0;
     text-align: center;
     margin-top: 1;
 }
 
-.list-item {
-    width: 85%;
-    height: 2.5vh;
-}
 
 .button-klein {
-    
     width: 20px;
     height: 20px;
     font-size: 15px;
@@ -214,3 +214,34 @@ h1 {
     display: none;
 }
 
+@media screen and (max-width: 650px) {
+    li {
+        width: 100%;
+        font-size: 15px;
+    }
+    .button{
+        width: 80px;
+        height: 80px;
+        font-size: 12px;
+    }
+    .to-main-page{
+        width: 40px;
+        height: 40px;
+    }
+    .list-button, .finish-button {
+        width: 35px;
+        height: 35px;
+        font-size: 12px;
+    }
+    #word {
+        font-size: 15px;
+    }
+    #checkAnswer, #showAnswer {
+        font-size: 12px;
+    }
+    .show-answer-button {
+        font-size: 8px;
+        width: 12%;
+        height: 5vh;
+    }
+}

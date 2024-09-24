@@ -334,5 +334,5 @@ const removeWronAndNewQueryBtn = () => {
   wrongAgainBtn.classList.add('hide');
   newQueryBtn.classList.add('hide');
 }
-/*
+/* 
 */
