@@ -1,6 +1,6 @@
  
 
-<img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/png/icon.PNG" alt="v icon"/> 
+<img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/public/png/icon.PNG" alt="v icon"/> 
 <br/>
 
 # Vocabulary Trainer
@@ -12,18 +12,18 @@
 
 ## Features
 
-<img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/png/main-page.PNG" alt="main page" width="350"/>
+<img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/public/png/main-page.PNG" alt="main page" width="350"/>
 Start a new query or edit your vocabulary list and go back to your current query.
 <br clear="left"/>
 <br/>
 
-<img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/png/training-page.PNG" alt="training page" width="350"/>
+<img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/public/png/training-page.PNG" alt="training page" width="350"/>
 Ask vocabulary one by one, answer via input and see immediately whether your answer is correct. If your answer was wrong, you can check the right answer.
 After finishing a query you have an option for a query with only incorrectly answered vocabulary.
  <br clear="left"/>
  <br/>
 
-<img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/png/list-page.PNG" alt="list page" hight="350" width="350px"/>
+<img align="left" src="https://github.com/c-bakis/vocabulary-trainer-js/blob/main/public/png/list-page.PNG" alt="list page" hight="350" width="350px"/>
 Enter new vocabulary in the input field, this will be saved locally. 
 Look at your list of vocabulary and delete vocabulary that you no longer need.
 <br clear="left"/>
@@ -39,7 +39,7 @@ Look at your list of vocabulary and delete vocabulary that you no longer need.
 
 ### What am I currently working on?
 
-- option of an automatic deletion function if a certain vocabulary word was answered correctly a certain amount of times.
+- option of an deletion function for all vocabulary word that were answered correctly a certain amount of times.
 
 ### Why a vocabulary trainer?
 
