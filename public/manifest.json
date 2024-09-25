@@ -1,0 +1,44 @@
+{
+    "name": "Vocabulary Trainer",
+    "short-name": "Vocabulary", 
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "scope": "/",
+    "background-color": "#010103",
+    "theme-color": "#010103",
+    "description": "learn your vocabulary, choose which words you need to learn",
+    "lang": "en-us",
+    "dir": "ltr",
+    "icons": [
+        {
+            "src": "/png/icon50x50.png",
+            "type": "image/png",
+            "size": "50x50"
+        },
+        {
+            "src": "/png/icon72x72.png",
+            "type": "image/png",
+            "size": "72x72"
+        },
+        {
+            "src": "/png/icon96x96.png",
+            "type": "image/png",
+            "size": "96x96"
+        },
+        {
+            "src": "/png/icon128x128.png",
+            "type": "image/png",
+            "size": "128x128"
+        },
+        {
+            "src": "/png/icon256x256.png",
+            "type": "image/png",
+            "size": "256x256"
+        },
+        {
+            "src": "/png/icon512x512.png",
+            "type": "image/png",
+            "size": "512x512"
+        }
+    ]
+}
