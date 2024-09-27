@@ -61,11 +61,9 @@ const english = document.querySelector("#english");
 const addItemBtn = document.getElementById('addItemBtn');
 const vocabList = document.getElementById("vocabularyList");
 let item = {};
-let dictionary = [];
+let dictionary = localStorage.getItem('dictionary') || [];
 if (dictionary.length !== 0){
-  dictionary =  JSON.parse(localStorage.getItem('dictionary') || []);
-} else {
-  dictionary = [];
+  dictionary =  JSON.parse(dictionary);
 }
 /**/
 // adds new Items to dictionary and local storage and calls updateItemList function
