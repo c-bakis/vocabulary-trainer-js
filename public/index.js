@@ -60,9 +60,14 @@ const german = document.querySelector("#german");
 const english = document.querySelector("#english");
 const addItemBtn = document.getElementById('addItemBtn');
 const vocabList = document.getElementById("vocabularyList");
-let dictionary =  JSON.parse(localStorage.getItem('dictionary') || []);
 let item = {};
-
+let dictionary = [];
+if (dictionary.length !== 0){
+  dictionary =  JSON.parse(localStorage.getItem('dictionary') || []);
+} else {
+  dictionary = [];
+}
+/**/
 // adds new Items to dictionary and local storage and calls updateItemList function
 const addVocabulary = () => {  
   if (german.value == '' || english.value == '') {
@@ -72,14 +77,15 @@ const addVocabulary = () => {
         'german': german.value,
         'english': english.value,
         'id':  new Date().getTime()
-    }
+    };
+    
     dictionary.push(item);
     localStorage.setItem('dictionary', JSON.stringify(dictionary));
-      
+    
       updateItemList(item);
-
   german.value = '';
   english.value = '';
+  
 } 
 
 //updates List of Vokabulary Items on display
@@ -103,7 +109,6 @@ const deleteVocab = (element) => {
     dictionary.splice(index, 1);
     updateItemList();
     localStorage.setItem('dictionary', JSON.stringify(dictionary));
-        console.log(dictionary);
 };
 
 // training page:
