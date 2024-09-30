@@ -39,7 +39,7 @@ Look at your list of vocabulary and delete vocabulary that you no longer need.
 
 ### What am I currently working on?
 
-- option of an deletion function for all vocabulary word that were answered correctly a certain amount of times.
+- option for using "enter" instead of clicking next and check button.
 
 ### Why a vocabulary trainer?
 
