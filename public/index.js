@@ -21,6 +21,7 @@ queryBtnGer.addEventListener('click', () => {
   nextBtnEng.classList.add('hide');
   nextBtnGer.classList.remove('hide');
   language = 'german';
+  nextVocabularyGer();
   console.log(language);
 
 });
@@ -33,6 +34,7 @@ queryBtnEng.addEventListener('click', () => {
   nextBtnGer.classList.add('hide');
   nextBtnEng.classList.remove('hide');
   language = 'english';
+  nextVocabularyEng();
 });
 listPageBtn.addEventListener('click', () => {
   listPage.classList.toggle('hide');
@@ -135,6 +137,8 @@ function mapEnglishGerman() {
 
 // onclick next button
 function nextVocabularyGer() {
+  answer.focus();
+  answer.select();
   clear()
   currentProgress(); 
   generateRandomWord(mapGerman);
@@ -144,6 +148,8 @@ function nextVocabularyGer() {
 }  
 
 function nextVocabularyEng() {
+  answer.focus();
+  answer.select();
   clear()
   currentProgress(); 
   generateRandomWord(mapEnglish);
@@ -338,4 +344,20 @@ const removeWronAndNewQueryBtn = () => {
   newQueryBtn.classList.add('hide');
 }
 /* 
+// using enter works but cant write in input anymore
+answerContainer = document.getElementById('answer-container')
+answerContainer.addEventListener('keydown', (event) => {
+  event.preventDefault();
+  if (event.key === 'Enter') {
+    if (!nextBtnGer.classList.contains('hide')) {
+      nextBtnGer.click();
+    } else if (!checkBtnGer.classList.contains('hide')) {
+      checkBtnGer.click();
+  } else if (!checkBtnEng.classList.contains('hide')) {
+    checkBtnEng.click();
+} else if (!nextBtnEng.classList.contains('hide')) {
+  nextBtnEng.click();
+}
+}});
+
 */
