@@ -9,6 +9,7 @@
 
 ![Static Badge](https://img.shields.io/badge/JavaScript-F7DF1E?logo=JavaScript&logoColor=000&style=flat-square)
 
+https://my-vocabulary-trainer.netlify.app
 
 ## Features
 
