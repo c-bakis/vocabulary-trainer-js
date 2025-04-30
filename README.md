@@ -38,10 +38,6 @@ Look at your list of vocabulary and delete vocabulary that you no longer need.
  - CSS 3
  - Vanilla JavaScript
 
-### What am I currently working on?
-
-- option for using "enter" instead of clicking next and check button.
-
 ### Why a vocabulary trainer?
 
 With the knowledge that I had previously acquired and the idea of building something useful for our family, especially for my kids, I started this Project.
