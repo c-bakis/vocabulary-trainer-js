@@ -7,10 +7,10 @@
 
 :root {
     --background: #010103;
-    --seconderyBackground: #43008f;
-    --input-color:#0e001a;
-    --text-color-button:#e0dddd;
-    --text-color: #ffffff;
+    --seconderyBackground: #43008fe7;
+    --input-color:#0e001afb;
+    --text-color-button:#e0ddddef;
+    --text-color: #ffffffde;
 }
 
 body {
@@ -48,6 +48,9 @@ body {
     align-items: center;
     width: 50%;
     margin: auto;
+}
+.list-form {
+    margin-bottom: 10px;
 }
 
 .query-container {
@@ -180,6 +183,7 @@ input{
 .item-label {
     height: 30%;
     margin-top: 1.5%;
+    font-weight: 500;
 }
 
 .ul-container {
@@ -208,6 +212,8 @@ li {
     margin: 0;
     text-align: center;
     margin-top: 1%;
+    
+    font-weight: 500;
 }
 
 h1 {
@@ -238,6 +244,7 @@ h1 {
 .answerCorrect {
     text-align: center;
     font-size: 75%;
+    font-weight: 500;
 }
 
 .hide {
@@ -398,4 +405,14 @@ h1 {
         margin: auto;
     }
     
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --background: #43008f50;
+        --seconderyBackground: #dad9d9;
+        --input-color: #f0f0f0;
+        --text-color-button: #161616;
+        --text-color: #161616;
+    }
 }
