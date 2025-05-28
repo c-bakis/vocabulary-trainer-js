@@ -343,21 +343,3 @@ const removeWronAndNewQueryBtn = () => {
   wrongAgainBtn.classList.add('hide');
   newQueryBtn.classList.add('hide');
 }
-/* 
-// using enter works but cant write in input anymore
-answerContainer = document.getElementById('answer-container')
-answerContainer.addEventListener('keydown', (event) => {
-  event.preventDefault();
-  if (event.key === 'Enter') {
-    if (!nextBtnGer.classList.contains('hide')) {
-      nextBtnGer.click();
-    } else if (!checkBtnGer.classList.contains('hide')) {
-      checkBtnGer.click();
-  } else if (!checkBtnEng.classList.contains('hide')) {
-    checkBtnEng.click();
-} else if (!nextBtnEng.classList.contains('hide')) {
-  nextBtnEng.click();
-}
-}});
-
-*/
