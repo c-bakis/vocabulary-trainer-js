@@ -313,13 +313,17 @@ function startNewQuery() {
 function wrongVocabAgain() {
   mapGerman = wrongAnsweredVocab.map(askedVocab => askedVocab.german);
   mapEnglish = wrongAnsweredVocab.map(askedVocab => askedVocab.english);
-  toggleWronAndNewQueryBtn();
   totalOfProgress();
+  toggleWronAndNewQueryBtn();
   reset();
   if(language === 'german') {
     nextBtnGer.classList.remove('hide');
+    answer.classList.remove('hide');
+    nextVocabularyGer();
   } else if(language === 'english') {
     nextBtnEng.classList.remove('hide');
+    answer.classList.remove('hide');
+    nextVocabularyEng();
   } else {
     startNewQuery();
   }
