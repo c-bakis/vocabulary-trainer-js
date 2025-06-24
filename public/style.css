@@ -409,10 +409,10 @@ h1 {
 
 @media (prefers-color-scheme: light) {
     :root {
-        --background: #43008f50;
-        --seconderyBackground: #dad9d9;
-        --input-color: #f0f0f0;
-        --text-color-button: #161616;
-        --text-color: #161616;
+        --background: #577be607;
+        --seconderyBackground: #0c8aff65;
+        --input-color: #ffffffee;
+        --text-color-button: #272727;
+        --text-color: #272727;
     }
 }
